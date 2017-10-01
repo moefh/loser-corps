@@ -1,7 +1,7 @@
 
 .PHONY: all build local-install clean
 
-CC = gcc -m32
+CC = gcc
 CFLAGS = -O2 -Wall
 
 all: local-install
