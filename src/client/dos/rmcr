@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for a in *.c *.h
+do
+    mv $a tmp
+    tr -d '\r' < tmp > $a
+done
+
+rm -f tmp

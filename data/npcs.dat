@@ -1,0 +1,820 @@
+#                                                   -*- Makefile -*-
+# The LOSER Corps NPC definition file
+#
+# Line breaks are allowed where spaces are allowed. Comments begin
+# with a '#' and extend to the end of the line.
+#
+
+
+#
+# Jacks
+#
+
+JACK loserboy {
+  sprite "jacks/loserboy"
+  clip   15 5 31 35
+  mirror 11
+  shoot_frame 22
+  stand  { 10 }
+  jump   { 4 }
+  walk   {
+           5 5 6 6 7 7 8 8 9 9 8 8 7 7 6 6 5 5
+           0 0 1 1 2 2 3 3 4 4 3 3 2 2 1 1 0 0
+         }
+# weapon 0 17 loserboy-weapon
+  weapon 0 16 pwr0
+  weapon 1 16 pwr1
+  weapon 2 16 pwr2
+  weapon 3 16 pwr3
+}
+
+JACK punkman {
+  sprite "jacks/punkman"
+  clip   20 10 24 54
+  mirror 12
+  stand  { 11 }
+  jump   { 10 }
+  walk   { 2 2 3 3 4 4 5 5 6 6 7 7 6 6 5 5 4 4 3 3 }
+  weapon 0 15 missile0
+  weapon 1 15 missile1
+  weapon 2 13 missile2
+  weapon 3 15 missile3
+}
+
+JACK blacknight {
+  sprite "jacks/blacknight"
+  clip   25 17 23 41
+  mirror 17
+  stand  { 0 }
+  jump   { 6 }
+  walk   {
+           7 7 7 8 8 8 9 9 9 10 10 10 11 11 11 12 12 12 13 13 13
+           14 14 14 15 15 15 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6
+         }
+  weapon 0 15 pudum
+  weapon 1 15 pudum
+  weapon 2 15 pudum
+  weapon 3 15 pudum
+}
+
+#JACK orangeman {
+#  sprite "jacks/orangman"
+#  clip   15 17 20 35
+#  mirror 5
+#  stand  { 0 }
+#  jump   { 0 }
+#  walk   { 0 0 1 1 2 2 1 1 0 0 3 3 4 4 3 3 }
+#  weapon 0 17 orange-missile
+#  weapon 1 17 orange-missile
+#  weapon 2 17 orange-missile
+#  weapon 3 17 orange-missile
+#}
+
+JACK loserboy-shadow {
+  sprite "jacks/loser-sh"
+  draw   alpha50
+  clip   15 5 31 35
+  mirror 11
+  stand  { 10 }
+  jump   { 4 }
+  walk   {
+           5 5 6 6 7 7 8 8 9 9 8 8 7 7 6 6 5 5
+           0 0 1 1 2 2 3 3 4 4 3 3 2 2 1 1 0 0
+         }
+  secret { 24 49 38 21  57  20 35 18  57  31 35 30 32 24 17  57
+           37 49 24 17 31 }
+  weapon 0 15 pwr1-sh
+  weapon 1 11 pwr2-sh
+  weapon 2 8 pwr3-sh
+  weapon 3 8 pwr3-sh
+}
+
+JACK stickman {
+  sprite "jacks/stickman"
+  clip   8 0 16 50
+  mirror 12
+  stand  { 0 }
+  jump   { 1 }
+  walk   { 2 3 4 5 6 7 8 9 10 11 }
+  secret { 31 20 23 46 37 57 20 35 18 57 50 30 49 }
+  weapon 0 19 rocket
+  weapon 1 19 rocket
+  weapon 2 19 rocket
+  weapon 3 19 rocket
+}
+
+
+#
+# Weapons
+#
+
+WEAPON cannonball {
+  sprite "weapons/cannonball"
+  layer bg
+  clip 0 0 22 22
+  speed 10
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON pudum {
+  sprite "weapons/pudum"
+  draw lighten
+  layer bg
+  clip 5 13 29 38
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON loserboy-weapon {
+  sprite "jacks/loserboy"
+  clip 15 5 31 35
+  layer bg
+  speed 15
+  accel 1
+  mirror 11
+  stand { 5 6 7 8 9 8 7 6 5 0 1 2 3 4 3 2 1 0 }
+}
+
+WEAPON pwr0 {
+  sprite "weapons/pwr0"
+  draw lighten
+  layer bg
+  clip 0 0 32 17
+  mirror 1
+  speed 15
+  accel 1
+  stand { 0 }
+}
+
+WEAPON pwr1 {
+  sprite "weapons/pwr1"
+  draw lighten
+  layer bg
+  clip 0 0 41 25
+  mirror 1
+  speed 15
+  accel 1
+  stand { 0 }
+}
+
+WEAPON pwr2 {
+  sprite "weapons/pwr2"
+  draw lighten
+  layer bg
+  clip 4 9 45 25
+  speed 12
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON pwr3 {
+  sprite "weapons/pwr3"
+  draw lighten
+  layer bg
+  clip 8 12 41 26
+  speed 11
+  accel 1
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON pwr1-sh {
+  sprite "weapons/pwr1"
+  draw displace
+  layer bg
+  clip 0 0 41 25
+  mirror 1
+  speed 15
+  stand { 0 }
+}
+
+WEAPON pwr2-sh {
+  sprite "weapons/pwr2"
+  draw displace
+  layer bg
+  clip 4 7 45 31
+  mirror 1
+  speed 15
+  stand { 0 }
+}
+
+WEAPON pwr3-sh {
+  sprite "weapons/pwr3"
+  draw displace
+  layer bg
+  clip 8 7 41 35
+  mirror 1
+  speed 12
+  stand { 0 }
+}
+
+WEAPON power {
+  sprite "weapons/power"
+  draw alpha25
+  layer bg
+  clip 0 0 33 17
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON missile0 {
+  sprite "weapons/missile0"
+  layer bg
+  speed 15
+  accel 1
+  clip 0 0 35 15
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON missile1 {
+  sprite "weapons/missile1"
+  layer bg
+  speed 15
+  accel 2
+  clip 0 0 47 15
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON missile2 {
+  sprite "weapons/missile2"
+  layer bg
+  speed 12
+  accel 2
+  clip 0 0 36 19
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON missile3 {
+  sprite "weapons/missile3"
+  layer bg
+  speed 11
+  accel 2
+  clip 0 0 61 39
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON orange-missile {
+  sprite "weapons/orange"
+  layer bg
+  clip 1 3 20 18
+  mirror 1
+  stand { 0 }
+}
+
+WEAPON rocket {
+  sprite "weapons/rocket"
+  layer bg
+  clip 0 0 19 8
+  mirror 1
+  stand { 0 }
+}
+
+
+#
+# Enemies
+#
+
+ENEMY cannon {
+#  sprite "enemies/cannon"
+  sprite "enemies/cannon-new"
+  lib  "cannon"
+#  clip 2 3 47 40
+  clip 1 2 51 28
+  block yes
+  mirror 1
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 13 cannonball
+}
+
+ENEMY ghost/chaser {
+  sprite "enemies/ghost"
+  lib "ghost"
+  draw alpha50
+  clip 2 2 32 38
+  mirror 1
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 10 power
+}
+
+ENEMY ghost/walker {
+  sprite "enemies/walker"
+  lib "walker"
+  draw alpha50
+  clip 2 2 26 56
+  mirror 1
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 30 power
+}
+
+ENEMY orange {
+  sprite "enemies/orangman"
+  lib    "smart"
+  clip   15 17 20 35
+  mirror 5
+  stand  { 0 }
+  jump   { 0 }
+  walk   { 0 0 1 1 2 2 1 1 0 0 3 3 4 4 3 3 }
+  weapon 0 17 orange-missile
+}
+
+ENEMY loser-shadow {
+  sprite "enemies/loser-sh"
+  lib    "smart"
+  draw   alpha50
+  clip   15 5 31 35
+  mirror 11
+  stand  { 10 }
+  jump   { 4 }
+  walk   {
+           5 5 6 6 7 7 8 8 9 9 8 8 7 7 6 6 5 5
+           0 0 1 1 2 2 3 3 4 4 3 3 2 2 1 1 0 0
+         }
+  weapon 0 15 pwr2
+}
+
+ENEMY meat/ball {
+  sprite "enemies/meatball"
+  lib "meatball"
+  clip 5 5 23 23
+  mirror 0
+  stand {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+        }
+  jump {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+       }
+  walk {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+       }
+  weapon 0 13 meat/slug
+}
+
+ENEMY meat/lord {
+  sprite "enemies/meatball"
+  lib "meatball"
+  clip 5 5 23 23
+  mirror 0
+  stand {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+        }
+  jump {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+       }
+  walk {
+          0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+          10 10 11 11 12 12 13 13 14 14 15 15
+       }
+  weapon 0 13 meat/ball
+}
+
+ENEMY meat/slug {
+  sprite "enemies/slug"
+  lib "slug"
+  clip 5 6 12 9
+  mirror 4
+  stand { 0 0 0 1 1 1 2 2 2 }
+  jump { 3 }
+  walk { 0 0 0 1 1 1 2 2 2 }
+  weapon 0 0 pwr0
+}
+
+ENEMY snail {
+  sprite "enemies/snail"
+  lib "snail"
+  clip 0 0 48 37
+  mirror 1
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 0 pwr0
+}
+
+ENEMY anvil {
+  sprite "enemies/anvil"
+  lib "anvil"
+  show_hit false
+  clip 0 0 64 32
+  block yes
+  mirror 0
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 0 pwr0
+}
+
+
+ENEMY platform/vertical {
+  sprite "enemies/platform"
+  lib "vplatform"
+  show_hit false
+  clip 0 0 64 64
+  block yes
+  mirror 0
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 0 pwr0
+}
+
+ENEMY platform/horizontal {
+  sprite "enemies/platform"
+  lib "hplatform"
+  show_hit false
+  clip 0 0 64 64
+  block yes
+  mirror 0
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 0 pwr0
+}
+
+ENEMY pushblock {
+  sprite "enemies/platform"
+  lib "pushblock"
+  show_hit false
+  clip 1 0 62 64
+  block yes
+  mirror 0
+  stand { 0 }
+  jump { 0 }
+  walk { 0 }
+  weapon 0 0 pwr0
+}
+
+
+#
+# Items
+#
+
+# Energy
+ITEM energy {
+  sprite "items/energy"
+  lib "energy"
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+# Energy tank
+ITEM energy-tank {
+  sprite "items/tank"
+  lib "etank"
+  clip 0 0 24 24
+  stand { 0 }
+}
+
+# Invincibility
+ITEM invincibility {
+  sprite "items/invinc"
+  lib "invinc"
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+ITEM power-up {
+  sprite "items/powerup"
+  lib "powerup"
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+ITEM shadow {
+  sprite "items/invisi"
+  lib "shadow"
+  draw alpha75
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+# This is a dummy item used to store text. If you use it as the target
+# of a teleporter, the text will be interpreted as the name of the map
+# to teleport to.
+ITEM text {
+  sprite "items/text"
+  lib "dumbitem"
+  draw none
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+# These may be placed as hints for robots in maps:
+ITEM route {
+  sprite "items/route"
+  lib "dumbitem"
+  draw none
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+ITEM scenario/water {
+  sprite "items/water"
+  lib "water"
+  draw alpha25
+  float slow
+  clip 0 0 64 32
+  stand { 0 1 }
+}
+
+ITEM scenario/moss {
+  sprite "items/moss"
+  lib "water"
+  draw alpha50
+  float slow
+  clip 0 0 64 32
+  stand { 0 1 }
+}
+
+ITEM scenario/wind {
+  sprite "items/wind"
+  lib "wind"
+  draw none
+  float none
+  clip 0 0 64 64
+  stand { 0 }
+}
+
+ITEM scenario/eyes {
+  sprite "items/eyes"
+  lib "eyes"
+  draw normal
+  layer bg
+  float none
+  clip 0 0 64 32
+  stand { 0 1 2 }
+}
+
+ITEM scenario/statue {
+  sprite "items/statue"
+  lib "dumbitem"
+  float none
+  clip 0 0 38 32
+  stand { 0 }
+}
+
+ITEM scenario/antenna {
+  sprite "items/antenna"
+  lib "dumbitem"
+  float none
+  clip 0 0 48 48
+  stand { 0 }
+}
+
+ITEM scenario/parallax {
+  sprite "items/paralax"
+  draw parallax
+  lib "dumbitem"
+  clip 0 0 64 64
+  stand { 0 }
+}
+
+ITEM tele/teleporter {
+  sprite "items/teleport"
+  lib "teleport"
+  draw lighten
+  clip 8 3 34 33
+  stand { 0 }
+}
+
+# The same as the teleporter, but invisible
+ITEM tele/teleporter-invisible {
+  sprite "items/teleport"
+  lib "teleport"
+  draw none
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+# Teleporter-target
+ITEM tele/target {
+  sprite "items/teletarget"
+  lib "dumbitem"
+  draw none
+  clip 0 0 34 33
+  stand { 0 }
+}
+
+ITEM tele/door {
+  sprite "items/passage"
+  lib "passage"
+  draw none
+  float none
+  clip 0 0 42 42
+  stand { 0 }
+}
+
+ITEM lever/star {
+  sprite "items/starlever"
+  lib "starlever"
+  clip 0 0 34 33
+  stand { 0 1 2 3 }
+}
+
+ITEM lever/star-invisible {
+  sprite "items/starlever"
+  lib "starlever"
+  draw none
+  clip 0 0 30 30
+  stand { 0 }
+}
+
+ITEM lever/spindle {
+  sprite "items/spindle"
+  lib "lever"
+  draw normal
+  layer bg
+  float none
+  clip 0 0 64 64
+  stand { 0 1 1 1 2 2 2 0 0 0 1 1 1 2 2 2 0 0 0 1 1 1 2 2 2 }
+}
+
+ITEM lever/down {
+  sprite "items/lever"
+  lib "lever"
+  draw normal
+  float none
+  clip 0 0 64 32
+  stand { 0 0 1 1 2 2 3 3 }
+}
+
+ITEM lever/top {
+  sprite "items/lever-top"
+  lib "lever"
+  draw normal
+  float none
+  clip 0 0 64 32
+  stand { 0 0 1 1 2 2 3 3 }
+}
+
+ITEM lever/left {
+  sprite "items/lever-left"
+  lib "lever"
+  draw normal
+  float none
+  clip 0 0 32 64
+  stand { 0 0 1 1 2 2 3 3 }
+}
+
+ITEM lever/right {
+  sprite "items/lever-right"
+  lib "lever"
+  draw normal
+  float none
+  clip 0 0 32 64
+  stand { 0 0 1 1 2 2 3 3 }
+}
+
+ITEM door/up {
+  sprite "items/door-u"
+  lib "dumbitem"
+  draw normal
+  float none
+  clip 0 0 32 64
+  stand { 0 1 2 3 4 5 6 }
+}
+
+ITEM door/down {
+  sprite "items/door-d"
+  lib "dumbitem"
+  draw normal
+  float none
+  clip 0 0 32 64
+  stand { 0 1 2 3 4 5 6 }
+}
+
+ITEM door/left {
+  sprite "items/door-l"
+  lib "dumbitem"
+  draw normal
+  float none
+  clip 0 0 64 32
+  stand { 0 1 2 3 4 5 6 }
+}
+
+ITEM door/right {
+  sprite "items/door-r"
+  lib "dumbitem"
+  draw normal
+  float none
+  clip 0 0 64 32
+  stand { 0 1 2 3 4 5 6 }
+}
+
+ITEM door/rock-up {
+  sprite "items/rockdoor-up"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 64
+  stand { 0 1 2 3 4 5 6 7 }
+}
+
+ITEM door/rock-down {
+  sprite "items/rockdoor-down"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 64
+  stand { 0 1 2 3 4 5 6 7 }
+}
+
+ITEM door/rock-left {
+  sprite "items/rockdoor-left"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 64
+  stand { 0 1 2 3 4 5 6 7 }
+}
+
+ITEM door/rock-right {
+  sprite "items/rockdoor-right"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 64
+  stand { 0 1 2 3 4 5 6 7 }
+}
+
+ITEM door/plat-left {
+  sprite "items/rockdoor-plat-left"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 32
+  stand { 0 1 2 3 4 5 }
+}
+
+ITEM door/plat-right {
+  sprite "items/rockdoor-plat-right"
+  lib "dumbitem"
+  float none
+  clip 0 0 64 32
+  stand { 0 1 2 3 4 5 }
+}
+
+ITEM info/text {
+  sprite "items/info"
+  lib "info"
+  draw normal
+  float none
+  layer bg
+  clip 0 0 30 30
+  stand { 0 }
+}
+
+ITEM info/plaque {
+  sprite "items/info-plaque"
+  lib "info"
+  draw normal
+  float none
+  layer bg
+  clip 0 0 30 47
+  stand { 0 }
+}
+
+ITEM info/arrow-exit {
+  sprite "items/exit"
+  lib "dumbitem"
+  clip 0 0 42 21
+  stand { 0 }
+}
+
+ITEM info/arrow-down {
+  sprite "items/arrow-down"
+  lib "dumbitem"
+  clip 0 0 45 31
+  stand { 0 }
+}
+
+ITEM info/arrow-up {
+  sprite "items/arrow-up"
+  lib "dumbitem"
+  clip 0 0 45 31
+  stand { 0 }
+}
+
+ITEM info/arrow-left {
+  sprite "items/arrow-left"
+  lib "dumbitem"
+  clip 0 0 45 31
+  stand { 0 }
+}
+
+ITEM info/arrow-right {
+  sprite "items/arrow-right"
+  lib "dumbitem"
+  clip 0 0 45 31
+  stand { 0 }
+}
+

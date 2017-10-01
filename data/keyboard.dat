@@ -1,0 +1,25 @@
+#                                                   -*- Makefile -*-
+# The LOSER Corps keyboard definition file
+#
+# To configure the keys, copy this file to $HOME/.loser and change it.
+#
+
+KEYBOARD {
+  left     CURSORBLOCKLEFT
+  right    CURSORBLOCKRIGHT
+  jump     CURSORBLOCKUP
+  down     CURSORBLOCKDOWN       # unused
+  shoot    X
+  use      TAB
+
+  show_map       M
+  show_fps       SLASH
+  show_parallax  P
+  show_credits   PERIOD
+  pause_credits  SPACE
+  screen_follow  F
+  screen_up      I
+  screen_down    K
+  screen_left    J
+  screen_right   L
+}

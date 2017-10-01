@@ -1,0 +1,9 @@
+-*- text -*-
+
+This is a MIDI server adapted from the sources of `playmidi',
+Copyright (C) 1994-1997 Nathan I. Laredo. It also contains playmidi's
+AWE32 code by Takashi Iwai.
+
+This is free software with absolutely NO WARRANTY. Look at the file
+`COPYING' in the main directory of this distribution for more
+information.

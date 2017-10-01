@@ -1,0 +1,10 @@
+*.spr*
+*.fon*
+tiles/castle3.spr*
+parallax/*.spr*
+enemies/*.spr*
+items/*.spr*
+weapons/*.spr*
+jacks/*.spr*
+credits/*.spr*
+mapedit/*.spr*

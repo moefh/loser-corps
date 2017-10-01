@@ -1,0 +1,113 @@
+#                                                   -*- Makefile -*-
+# The LOSER Corps sound definition file
+#
+
+SAMPLE bump {
+  file    bump.wav
+  author  "Moe"
+  copyright "Copyright (C) 1998 Ricardo R. Massaro"
+}
+
+SAMPLE explosion {
+  file    expl.wav
+  author  "??"
+}
+
+SAMPLE blip {
+  file   Item1.wav
+  author  "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+SAMPLE teleport1 {
+  file teleport1.wav
+  author "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+SAMPLE teleport2 {
+  file teleport2.wav
+  author "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+SAMPLE teleport3 {
+  file teleport3.wav
+  author "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+SAMPLE opendoor {
+  file Odoor.wav
+  author "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+SAMPLE closedoor {
+  file Cdoor.wav
+  author "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI theme {
+  file      Theme.mid
+  comment   "The Loser Theme"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase1 {
+  file      Fase1.mid
+  comment   "Shadow's Requiem"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase2 {
+  file      Fase2.mid
+  comment   "Battle 42"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase3 {
+  file      Fase3.mid
+  comment   "Victory's Parade"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase4 {
+  file      Fase4.mid
+  comment   "Icy Blizzard"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase5 {
+  file      Fase5.mid
+  comment   "Losers Unite!"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase6 {
+  file      Fase6.mid
+  comment   "The Dark Master"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI fase7 {
+  file      Fase7.mid
+  comment   "The Holy Loser Grail"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}
+
+MIDI boss {
+  file      Boss.mid
+  comment   "Boss Theme"
+  author    "Pierce"
+  copyright "Copyright (C) 1999 Guilherme G. Nepomuceno"
+}

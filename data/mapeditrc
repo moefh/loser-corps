@@ -1,0 +1,20 @@
+# mapeditrc
+#
+# Loser Map Editor configuration
+
+
+# Set `shm' to 1 if you want to use X shared memory. This option may
+# be overriden in the command line.
+shm = 1
+
+# Normal font
+font = -*-helvetica-bold-r-*-*-14-*-*-*-*-*-iso8859-*
+#font = fixed
+
+# Base data directory (usually `data' or `/usr/local/lib/loser')
+data_dir = data
+
+# Files
+blocks = mapedit/block.spr
+map = maps/castle.map
+

@@ -1,0 +1,24 @@
+#
+# The L.O.S.E.R Corps - color correction
+#
+# This file specifies the color correction for the game.
+# The correction will be applied to the palette (when run under 8bpp) or
+# to each pixel of the images (when in 16 or 32bpp).
+#
+# Values are in the range -255 to 255.
+#
+
+# This is for dark monitors (suggested by 1/2):
+#r = 32
+#g = 27
+#b = 15
+
+# Use this to get a "night" cenario:
+#r = -32
+#g = -32
+#b = -32
+
+# This is the game default:
+r = 0
+g = 0
+b = 0

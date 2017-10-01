@@ -1,0 +1,29 @@
+#                                            -*- Makefile -*-
+#
+# tilesets.dat - The LOSER Corps tilesets definition file
+#
+
+TILESET castle {
+  author     "1/2"
+  copyright  "Copyright (C) 1998,1999 Marcus H. Penna"
+  comment    ""
+}
+
+TILESET castle3 {
+  author     "1/2"
+  copyright  "Copyright (C) 1998,1999 Marcus H. Penna"
+  comment    ""
+}
+
+TILESET penguin {
+  author     "Moe"
+  copyright  "Copyright (C) 1998,1999 Ricardo R. Massaro"
+  comment    ""
+}
+
+TILESET ice {
+  author     "Pierce, 1/2 & Moe"
+  copyright  "Copyright (C) 1999 G. G. Nepomuceno, M. H. Penna, R. R. Massaro"
+  comment    ""
+}
+

@@ -1,0 +1,30 @@
+
+.PHONY: all common xdialogs clean
+
+all: xloser loser-s loser-map npcs
+
+clean:
+	make -C client clean
+	make -C server clean
+	make -C common clean
+	make -C xdialogs clean
+	make -C mapedit clean
+	make -C npcs clean
+
+xloser: common
+	make -C client
+
+loser-map: xdialogs
+	make -C mapedit
+
+loser-s:
+	make -C server
+
+npcs: common
+	make -C npcs
+
+common:
+	make -C common
+
+xdialogs:
+	make -C xdialogs

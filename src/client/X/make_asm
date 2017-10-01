@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gcc -O2 -Wall -fomit-frame-pointer -I/usr/X11R6/include -DGRAPH_X11 -DNET_PLAY -o screen.S -S screen.c
