@@ -17,4 +17,5 @@ local-install: build
 	cp -f src/client/xloser .
 	cp -f src/server/loser-s .
 	cp -f src/mapedit/loser-map .
+	test -d libs/npcs || mkdir -p libs/npcs
 	cp -f src/npcs/*.so libs/npcs/
