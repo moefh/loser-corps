@@ -43,9 +43,9 @@ static FILE *look_for_file(char *file, char **search_path, char *output)
     if (search_path[i][0] == '\0') {
       if ((home = getenv("HOME")) == NULL)
 	continue;
-      sprintf(filename, "%s/.", home);
+      snprintf(filename, sizeof(filename), "%s/.", home);
     } else
-      sprintf(filename, "%s/", search_path[i]);
+      snprintf(filename, sizeof(filename), "%s/", search_path[i]);
 
     strcat(filename, file);
 

@@ -11,11 +11,11 @@
 #define DEFAULT_USE_SHM    1
 
 typedef struct OPTIONS {
-  char data_dir[1024];        /* Base data directory */
-  char map_file[1024];        /* Startup map file */
-  char block_bmp_file[1024];  /* Block bitmap file */
-  char back_bmp_file[1024];   /* Back bitmap file */
-  char font[1024];            /* Font name */
+  char data_dir[256];        /* Base data directory */
+  char map_file[256];        /* Startup map file */
+  char block_bmp_file[256];  /* Block bitmap file */
+  char back_bmp_file[256];   /* Back bitmap file */
+  char font[256];            /* Font name */
 #ifdef USE_SHM
   int use_shm;                /* 1 to use shared memory */
 #endif

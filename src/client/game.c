@@ -15,6 +15,8 @@
 
 #include <fcntl.h>
 
+#define BLA
+
 #include "common.h"
 #include "game.h"
 #include "rmsg.h"
@@ -73,7 +75,7 @@ JACK *jacks;                        /* All jacks */
 PLAYER *player;                     /* Jack info for this player */
 SERVER *server;                     /* Server info */
 
-char image_dir[256];                /* Image directory */
+char image_dir[IMAGE_DIR_SIZE];     /* Image directory */
 
 /* Game key state */
 unsigned char game_key[256];
@@ -588,14 +590,14 @@ void reset_jack(JACK *jack)
 /* Read a jack and color its bmp */
 int do_read_jack(int npc, JACK *j, int id)
 {
-  char filename[256];
+  char filename[272];
 
   if (npc > npc_number.num) {
     printf("Internal LOSER error: invalid NPC %d\n", npc);
     return 1;
   }
 
-  sprintf(filename, "%s.spr", npc_info[npc].file);
+  snprintf(filename, sizeof(filename), "%s.spr", npc_info[npc].file);
   strcpy(filename, img_file_name(filename));
   if (read_jack(filename, j, JACK_COLOR(id))) {
     printf("Error reading file `%s' at do_read_jack()\n", filename);
@@ -683,7 +685,7 @@ static void get_image_dir(int bpp)
 {
   if (bpp > 2)
     bpp = 2;     /* Read 24 and 32 bpp images from 16bpp files */
-  sprintf(IMAGE_DIR, IMAGE_DIR_MASK, 8*bpp);
+  snprintf(IMAGE_DIR, IMAGE_DIR_SIZE, IMAGE_DIR_MASK, 8*bpp);
 }
 
 

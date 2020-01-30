@@ -18,11 +18,11 @@ int gz_file_open(GZIP_FILE *file, const char *name, const char *mode)
     return 0;
   }
 
-  sprintf(file_name, "%s.gz", name);
+  snprintf(file_name, sizeof(file_name), "%s.gz", name);
   if (access(file_name, R_OK) == 0) {
     char command[1024];
 
-    sprintf(command, "gunzip -c %s", file_name);
+    snprintf(command, sizeof(command), "gunzip -c %s", file_name);
     if ((file->f = popen(command, mode)) != NULL) {
       file->piped = 1;
       return 0;

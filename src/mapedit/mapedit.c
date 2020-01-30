@@ -27,14 +27,14 @@ int use_shm = 1;
 /* Read object bitmaps */
 static void read_obj_bitmaps(STATE *s)
 {
-  char obj_filename[256];
+  char obj_filename[640];
   int i;
 
   for (i = 0; i < MAX_BMPS; i++)
     s->obj_bmp[i] = NULL;
 
   for (i = 0; npc_names[i].npc >= 0; i++) {
-    sprintf(obj_filename, "%s/%dbpp/%s.spr",
+    snprintf(obj_filename, sizeof(obj_filename), "%s/%dbpp/%s.spr",
 	    options->data_dir, 8*SCREEN_BPP,
 	    s->npc_info[npc_names[i].npc].file);
     s->obj_bmp[npc_names[i].npc] = read_xbitmap(obj_filename);
@@ -54,9 +54,9 @@ static void read_obj_bitmaps(STATE *s)
 /* Initialize the state */
 void init_state(STATE *s, OPTIONS *options)
 {
-  char block_filename[256];
-  char back_filename[256];
-  char npc_info_filename[256];
+  char block_filename[640];
+  char back_filename[640];
+  char npc_info_filename[640];
 
 #ifdef USE_SHM
   use_shm = options->use_shm;
@@ -72,14 +72,14 @@ void init_state(STATE *s, OPTIONS *options)
   }
 
   /* Read the NPC info */
-  sprintf(npc_info_filename, "%s/npcs.dat", options->data_dir);
+  snprintf(npc_info_filename, sizeof(npc_info_filename), "%s/npcs.dat", options->data_dir);
   s->num_npcs = parse_npc_info(s->npc_info, npc_info_filename);
   if (s->num_npcs <= 0)
     exit(1);
   build_npc_table(s);
 
   /* Read block bitmaps */
-  sprintf(block_filename, "%s/%dbpp/%s",
+  snprintf(block_filename, sizeof(block_filename), "%s/%dbpp/%s",
 	  options->data_dir, 8*SCREEN_BPP, options->block_bmp_file);
   s->n_block_bmps = read_xbitmaps(block_filename, MAX_BMPS, s->block_bmp);
   if (s->n_block_bmps <= 0) {
@@ -93,7 +93,7 @@ void init_state(STATE *s, OPTIONS *options)
   }
 
   /* Read back bitmaps */
-  sprintf(back_filename, "%s/%dbpp/%s",
+  snprintf(back_filename, sizeof(back_filename), "%s/%dbpp/%s",
 	  options->data_dir, 8*SCREEN_BPP, options->back_bmp_file);
   s->n_back_bmps = read_xbitmaps(back_filename, MAX_BMPS, s->back_bmp);
   if (s->n_back_bmps <= 0) {
@@ -155,7 +155,7 @@ static void install_palette(char *file)
   FILE *f;
   char filename[256];
 
-  sprintf(filename, file, 8*SCREEN_BPP);
+  snprintf(filename, sizeof(filename), file, 8*SCREEN_BPP);
 
   if ((f = fopen(filename, "rb")) == NULL) {
     fprintf(stderr, "Warning: can't open palette file `%s'\n", filename);
@@ -243,7 +243,7 @@ int read_state_map(STATE *s, char *filename)
 {
   MAP *map;
   int x, y;
-  char bmp_filename[256];
+  char bmp_filename[640];
 
   map = read_map(filename);
   if (map == NULL)
@@ -263,7 +263,7 @@ int read_state_map(STATE *s, char *filename)
     strcpy(tiles_filename, s->map->tiles);
     if ((p = strchr(tiles_filename, ':')) != NULL)
       *p = '\0';
-    sprintf(bmp_filename, "%s/%dbpp/tiles/%s.spr",
+    snprintf(bmp_filename, sizeof(bmp_filename), "%s/%dbpp/tiles/%s.spr",
 	    options->data_dir, 8*SCREEN_BPP, tiles_filename);
     if (read_state_bitmaps(s, bmp_filename))
       printf("Warning: can't read tiles from `%s'\n", bmp_filename);
@@ -477,7 +477,7 @@ void check_data_dir(char *data_dir)
 {
   char maps_dir[1024];
 
-  sprintf(maps_dir, "%s/maps", data_dir);
+  snprintf(maps_dir, sizeof(maps_dir), "%s/maps", data_dir);
   if (access(maps_dir, R_OK) != 0) {
     strcpy(maps_dir, LOCAL_DATA_DIR "maps");
     if (access(maps_dir, R_OK) == 0)
@@ -488,7 +488,7 @@ void check_data_dir(char *data_dir)
 int main(int argc, char *argv[])
 {
   WINDOW *main_window;
-  char filename[256];
+  char filename[640];
 
   xd_window_class = "LoserMap";
   xd_window_name = "loser";
@@ -537,7 +537,7 @@ int main(int argc, char *argv[])
   printf("loser-map: using data dir `%s'\n", options->data_dir);
 #endif
 
-  sprintf(filename, "%s/%s", options->data_dir, options->map_file);
+  snprintf(filename, sizeof(filename), "%s/%s", options->data_dir, options->map_file);
   if (read_state_map(&state, filename)) {
     printf("Warning: can't read file `%s'\n", filename);
     if (create_state_map(&state, 32, 32, -1, -1)) {

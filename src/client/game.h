@@ -45,7 +45,7 @@ enum {
 #endif /* __GNUC__ */
 #endif /* INLINE */
 
-
+#define IMAGE_DIR_SIZE 256
 #define IMAGE_DIR image_dir
 
 #define MAX_TILES          256

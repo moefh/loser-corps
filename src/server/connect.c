@@ -69,7 +69,7 @@ int server_read_map_file(SERVER *server, MAP_INFO *info, char *map_name)
   MAP map;
   int ret, x, y, i;
 
-  sprintf(filename, "%s%s%s.map", DATA_DIR, MAPS_DIR, map_name);
+  snprintf(filename, sizeof(filename), "%s%s%s.map", DATA_DIR, MAPS_DIR, map_name);
   ret = srv_read_map(server, filename, &map);
   if (ret != MSGRET_OK)
     return ret;
@@ -135,7 +135,7 @@ static int server_load_map(SERVER *server, char *map_name)
 /* Return the default file name for a jack with no name */
 static void get_default_jack_name(JACK *jack)
 {
-  sprintf(jack->name, "Player %d", jack->id + 1);
+  snprintf(jack->name, sizeof(jack->name), "Player %d", jack->id + 1);
 }
 
 /* Setup the server and the clients for the start. */

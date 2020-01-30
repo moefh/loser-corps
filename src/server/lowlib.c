@@ -15,7 +15,7 @@ int do_load_library(char *name, ADDON_LIBRARY *lib, char *func_name)
 {
   char filename[256];
 
-  sprintf(filename, LIBDIR "/libs/npcs/lib%s.so", name);
+  snprintf(filename, sizeof(filename), LIBDIR "/libs/npcs/lib%s.so", name);
 
   lib->handle = dlopen(filename, RTLD_NOW);
   if (lib->handle == NULL) {

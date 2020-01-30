@@ -60,7 +60,7 @@ static char *msg_name(int type)
   for (i = 0; msg_names[i].name != NULL; i++)
     if (msg_names[i].type == type)
       return msg_names[i].name;
-  sprintf(buf, "(type %d)", type);
+  snprintf(buf, sizeof(buf), "(type %d)", type);
   return buf;
 }
 #endif /* DO_DEBUG */

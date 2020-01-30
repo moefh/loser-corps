@@ -295,22 +295,22 @@ void set_object_attributes(WINDOW *win, MAP_OBJECT *obj, int id)
 #endif
   obj_dialog[OBJDLG_NPC_LIST].d1 = get_npc_index(obj->npc);
 
-  sprintf(objdlg_title_txt, "Object [%d] properties", id);
-  sprintf(objdlg_x_txt, "%d", obj->x);
-  sprintf(objdlg_y_txt, "%d", obj->y);
-  sprintf(objdlg_respawn_txt, "%d", obj->respawn);
-  sprintf(objdlg_dir_txt, "%d", obj->dir);
-  sprintf(objdlg_level_txt, "%d", obj->level);
-  sprintf(objdlg_duration_txt, "%d", obj->duration);
-  sprintf(objdlg_vulnerability_txt, "%d", obj->vulnerability);
-  sprintf(objdlg_text_txt, "%s", obj->text);
+  snprintf(objdlg_title_txt,         sizeof(objdlg_title_txt),         "Object [%d] properties", id);
+  snprintf(objdlg_x_txt,             sizeof(objdlg_x_txt),             "%d", obj->x);
+  snprintf(objdlg_y_txt,             sizeof(objdlg_y_txt),             "%d", obj->y);
+  snprintf(objdlg_respawn_txt,       sizeof(objdlg_respawn_txt),       "%d", obj->respawn);
+  snprintf(objdlg_dir_txt,           sizeof(objdlg_dir_txt),           "%d", obj->dir);
+  snprintf(objdlg_level_txt,         sizeof(objdlg_level_txt),         "%d", obj->level);
+  snprintf(objdlg_duration_txt,      sizeof(objdlg_duration_txt),      "%d", obj->duration);
+  snprintf(objdlg_vulnerability_txt, sizeof(objdlg_vulnerability_txt), "%d", obj->vulnerability);
+  snprintf(objdlg_text_txt,          sizeof(objdlg_text_txt),          "%s", obj->text);
 
   if (obj->target < 0) {
     objdlg_target_txt[1] = NULL;
     obj_dialog[OBJDLG_TARGET_TEXT].d1 = 0;
   } else {
     objdlg_target_txt[1] = objdlg_target_number;
-    sprintf(objdlg_target_number, "%d", obj->target);
+    snprintf(objdlg_target_number, sizeof(objdlg_target_number), "%d", obj->target);
     obj_dialog[OBJDLG_TARGET_TEXT].d1 = 1;
   }
 
@@ -465,14 +465,14 @@ static int parmdlg_default_proc(int msg, WINDOW *win, DIALOG *dlg, int c)
 
   ret = button_proc(msg, win, dlg, c);
   if (ret & D_CLOSE) {
-    sprintf(parmdlg_maxyspeed_txt,  "%d", DEFAULT_MAX_Y_SPEED);
-    sprintf(parmdlg_jumphold_txt,   "%d", DEFAULT_JUMP_HOLD);
-    sprintf(parmdlg_gravity_txt,    "%d", DEFAULT_GRAVITY);
-    sprintf(parmdlg_maxxspeed_txt,  "%d", DEFAULT_MAX_X_SPEED);
-    sprintf(parmdlg_accel_txt,      "%d", DEFAULT_WALK_ACCEL);
-    sprintf(parmdlg_jumpaccel_txt,  "%d", DEFAULT_JUMP_ACCEL);
-    sprintf(parmdlg_attrict_txt,    "%d", DEFAULT_ATTRICT);
-    sprintf(parmdlg_frameskip_txt,  "%d", DEFAULT_FRAME_SKIP);
+    snprintf(parmdlg_maxyspeed_txt,  sizeof(parmdlg_maxyspeed_txt), "%d", DEFAULT_MAX_Y_SPEED);
+    snprintf(parmdlg_jumphold_txt,   sizeof(parmdlg_jumphold_txt),  "%d", DEFAULT_JUMP_HOLD);
+    snprintf(parmdlg_gravity_txt,    sizeof(parmdlg_gravity_txt),   "%d", DEFAULT_GRAVITY);
+    snprintf(parmdlg_maxxspeed_txt,  sizeof(parmdlg_maxxspeed_txt), "%d", DEFAULT_MAX_X_SPEED);
+    snprintf(parmdlg_accel_txt,      sizeof(parmdlg_accel_txt),     "%d", DEFAULT_WALK_ACCEL);
+    snprintf(parmdlg_jumpaccel_txt,  sizeof(parmdlg_jumpaccel_txt), "%d", DEFAULT_JUMP_ACCEL);
+    snprintf(parmdlg_attrict_txt,    sizeof(parmdlg_attrict_txt),   "%d", DEFAULT_ATTRICT);
+    snprintf(parmdlg_frameskip_txt,  sizeof(parmdlg_frameskip_txt), "%d", DEFAULT_FRAME_SKIP);
 
     return D_REDRAW;
   }

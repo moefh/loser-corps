@@ -151,7 +151,7 @@ unsigned int ReadColors(unsigned int NFiles, char *Files[],
     {
       BMP_FONT *font;
 
-      sprintf(FullFileName, "%s/%s", dir_16bpp, Files[NFiles - 1]);
+      snprintf(FullFileName, sizeof(FullFileName), "%s/%s", dir_16bpp, Files[NFiles - 1]);
 
       /* printf("Reading `%s'...\n", FullFileName); */
 
@@ -415,7 +415,7 @@ void SaveColors(unsigned int NFiles, char **Name, ColorSpace *LCSpace,
   {
     FILE *f;
  
-    sprintf(filename, "%s/%s", dir_8bpp, pal_file);
+    snprintf(filename, sizeof(filename), "%s/%s", dir_8bpp, pal_file);
     if ((f = fopen(filename, "wb")) == NULL) {
       printf("Error: can't write `%s'\n", filename);
       exit(1);
@@ -427,7 +427,7 @@ void SaveColors(unsigned int NFiles, char **Name, ColorSpace *LCSpace,
   for (i = 0; i < NFiles; i++) {
     BMP_FONT *font;
 
-    sprintf(filename, "%s/%s", dir_16bpp, Name[i]);
+    snprintf(filename, sizeof(filename), "%s/%s", dir_16bpp, Name[i]);
 
     /* Read the input file */
     if (is_spr_file(filename)) {
@@ -458,7 +458,7 @@ void SaveColors(unsigned int NFiles, char **Name, ColorSpace *LCSpace,
       }
 
     /* Write the output */
-    sprintf(filename, "%s/%s", dir_8bpp, Name[i]);
+    snprintf(filename, sizeof(filename), "%s/%s", dir_8bpp, Name[i]);
     /* printf("Writing `%s'\n", filename); */
 
     if (font == NULL) {

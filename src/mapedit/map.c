@@ -140,7 +140,7 @@ void build_npc_table(STATE *s)
 
       npc_names[name].npc = i;
 #if 1
-      sprintf(npc_names[name].name, "%s: %s", str_type, cur_name);
+      snprintf(npc_names[name].name, sizeof(npc_names[name].name), "%s: %s", str_type, cur_name);
 #else
       strcpy(npc_names[name].name, cur_name);
 #endif

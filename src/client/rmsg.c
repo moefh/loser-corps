@@ -31,12 +31,12 @@ int read_messages(char *name, char **msg)
 
   home = getenv("HOME");
   if (home != NULL) {
-    sprintf(filename, "%s/.%s", home, name);
+    snprintf(filename, sizeof(filename), "%s/.%s", home, name);
     f = fopen(filename, "r");
   }
 
   if (f == NULL) {
-    sprintf(filename, "data/%s", name);
+    snprintf(filename, sizeof(filename), "data/%s", name);
     f = fopen(filename, "r");
   }
 

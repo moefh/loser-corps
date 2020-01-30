@@ -38,7 +38,7 @@ char *img_file_name(char *file)
   static char buf[256];
   char *p;
 
-  sprintf(buf, "%s%s%s", DATA_DIR, IMAGE_DIR, file);
+  snprintf(buf, sizeof(buf), "%s%s%s", DATA_DIR, IMAGE_DIR, file);
   for (p = buf; *p != '\0'; p++)
     if (*p == '|')
       *p = DIRECTORY_SEP;
@@ -50,16 +50,16 @@ char *img_file_name(char *file)
 static int read_npc_files(void)
 {
   int i, j;
-  char filename[256];
+  char filename[272];
   XBITMAP *bmp[256];
 
   /* Read the info */
-  sprintf(filename, "%snpcs.dat", DATA_DIR);
+  snprintf(filename, sizeof(filename), "%snpcs.dat", DATA_DIR);
   if ((npc_number.num = parse_npc_info(game_npc_info, filename)) <= 0)
     return 1;
   npc_info = game_npc_info;
 
-  sprintf(filename, "%stilesets.dat", DATA_DIR);
+  snprintf(filename, sizeof(filename), "%stilesets.dat", DATA_DIR);
   if (parse_tileset_info(&game_tileset_info, filename))
     return 1;
   tileset_info = &game_tileset_info;
@@ -89,7 +89,7 @@ static int read_npc_files(void)
     if (IS_NPC_JACK(i))
       continue;          /* Jacks are read when requested by the server */
 
-    sprintf(filename, "%s.spr", npc_info[i].file);
+    snprintf(filename, sizeof(filename), "%s.spr", npc_info[i].file);
     strcpy(filename, img_file_name(filename));
     if ((game_npc_info[i].n_bmps = read_xbitmaps(filename, 256, bmp)) <= 0) {
       start_error_msg("Error reading sprite file `%s' at read_npc_files().\n",
@@ -209,7 +209,7 @@ int read_map_file(char *map_name)
   char *music_name, *parallax_name;
 
   /* Read the map */
-  sprintf(filename, "%s%s%s.map", DATA_DIR, MAPS_DIR, map_name);
+  snprintf(filename, sizeof(filename), "%s%s%s.map", DATA_DIR, MAPS_DIR, map_name);
   map = read_map(filename, &map_w, &map_h, NULL, NULL, tiles_filename);
   if (map == NULL) {
     start_error_msg("Can't read map from file `%s'\n", filename);
@@ -304,7 +304,7 @@ int read_map_file(char *map_name)
   }
 
   /* Now actually read the files */
-  sprintf(filename, "tiles/%s.spr", tiles_filename);
+  snprintf(filename, sizeof(filename), "tiles/%s.spr", tiles_filename);
   strcpy(filename, img_file_name(filename));
   tile = (XBITMAP **) malloc(sizeof(XBITMAP *) * MAX_TILES);
   if (tile == NULL) {
@@ -316,7 +316,7 @@ int read_map_file(char *map_name)
     return 1;
   }
   if (parallax_filename[0] != '\0') {
-    sprintf(filename, "parallax/%s.spr", parallax_filename);
+    snprintf(filename, sizeof(filename), "parallax/%s.spr", parallax_filename);
     strcpy(filename, img_file_name(filename));
     parallax_bmp = read_xbitmap(filename);
     if (parallax_bmp == NULL) {
@@ -327,7 +327,7 @@ int read_map_file(char *map_name)
 
   if (SCREEN_BPP == 1) {
     /* Read the palette */
-    sprintf(filename, "tiles/%s.pal", tiles_filename);
+    snprintf(filename, sizeof(filename), "tiles/%s.pal", tiles_filename);
     strcpy(filename, img_file_name(filename));
     if (read_palette(filename)) {
       start_error_msg("Can't read palette from file `%s'.\n", filename);
@@ -347,12 +347,12 @@ void read_keyboard_config(void)
 
   p = getenv("HOME");
   if (p != NULL) {
-    sprintf(filename, "%s/.loser", p);
+    snprintf(filename, sizeof(filename), "%s/.loser", p);
     if (parse_key_info(&key_config, filename) == 0)
       done = 1;
   }
   if (! done) {
-    sprintf(filename, "%s%s", DATA_DIR, "keyboard.dat");
+    snprintf(filename, sizeof(filename), "%s%s", DATA_DIR, "keyboard.dat");
     parse_key_info(&key_config, filename);
   }
 }
@@ -403,12 +403,12 @@ static int read_setup(char *file, SETUP *setup)
 
   home = getenv("HOME");
   if (home != NULL) {
-    sprintf(filename, "%s%c.%s", home, DIRECTORY_SEP, COLOR_CORRECTION_FILE);
+    snprintf(filename, sizeof(filename), "%s%c.%s", home, DIRECTORY_SEP, COLOR_CORRECTION_FILE);
     f = fopen(filename, "r");
   }
 
   if (f == NULL) {
-    sprintf(filename, "%s%s", DATA_DIR, COLOR_CORRECTION_FILE);
+    snprintf(filename, sizeof(filename), "%s%s", DATA_DIR, COLOR_CORRECTION_FILE);
     f = fopen(filename, "r");
   }
 

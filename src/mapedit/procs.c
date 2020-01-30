@@ -426,7 +426,7 @@ static int save_map(WINDOW *win, char *file, MAP *map)
   if (has_error) {
     char str[42];
 
-    sprintf(str, "(%d,%d)", out_x, out_y);
+    snprintf(str, sizeof(str), "(%d,%d)", out_x, out_y);
     alert(win, "Warning", "This map has a tile out of the range",
 	  "of the current set of bitmaps:", str, "OK", NULL);
     return 0;
@@ -442,7 +442,7 @@ static int save_map(WINDOW *win, char *file, MAP *map)
   if (has_error) {
     char str[42];
 
-    sprintf(str, "(%d,%d)", out_x, out_y);
+    snprintf(str, sizeof(str), "(%d,%d)", out_x, out_y);
     alert(win, "Warning", "This map has a block out of the range",
 	  "of the current set of blocks:", str, "OK", NULL);
     return 0;
@@ -586,12 +586,12 @@ int menu_parms(WINDOW *win, int id)
   }
 
   sprintf(parmdlg_maxyspeed_txt, "%d", state.map->maxyspeed);
-  sprintf(parmdlg_jumphold_txt, "%d", state.map->jumphold);
-  sprintf(parmdlg_gravity_txt, "%d", state.map->gravity);
+  sprintf(parmdlg_jumphold_txt,  "%d", state.map->jumphold);
+  sprintf(parmdlg_gravity_txt,   "%d", state.map->gravity);
   sprintf(parmdlg_maxxspeed_txt, "%d", state.map->maxxspeed);
-  sprintf(parmdlg_accel_txt, "%d", state.map->accel);
+  sprintf(parmdlg_accel_txt,     "%d", state.map->accel);
   sprintf(parmdlg_jumpaccel_txt, "%d", state.map->jumpaccel);
-  sprintf(parmdlg_attrict_txt, "%d", state.map->attrict);
+  sprintf(parmdlg_attrict_txt,   "%d", state.map->attrict);
   sprintf(parmdlg_frameskip_txt, "%d", state.map->frameskip);
 
   centre_dialog(parm_dlg, win->parent);

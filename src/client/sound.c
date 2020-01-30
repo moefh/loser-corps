@@ -40,7 +40,7 @@ static void read_sound_files(void)
   char filename[256];
 
   for (j = i = 0; i < N_SAMPLES; i++) {
-    sprintf(filename, "%s%s%s", DATA_DIR, SOUND_DIR, spl_file[i]);
+    snprintf(filename, sizeof(filename), "%s%s%s", DATA_DIR, SOUND_DIR, spl_file[i]);
     snd_sample[j] = load_sample(filename);
     if (snd_sample[j] != NULL)
       j++;
@@ -48,7 +48,7 @@ static void read_sound_files(void)
   n_samples = j;
 
   for (j = i = 0; i < N_MUSICS; i++) {
-    sprintf(filename, "%s%s%s", DATA_DIR, SOUND_DIR, midi_file[i]);
+    snprintf(filename, sizeof(filename), "%s%s%s", DATA_DIR, SOUND_DIR, midi_file[i]);
     snd_midi[j] = load_midi(filename);
     if (snd_midi[j] != NULL)
       j++;
@@ -253,7 +253,7 @@ void setup_sound(char *midi_dev, char *dsp_dev)
 
   sound_info = &game_sound_info;
 
-  sprintf(info_filename, "%ssound.dat", DATA_DIR);
+  snprintf(info_filename, sizeof(info_filename), "%ssound.dat", DATA_DIR);
   if (parse_sound_info(sound_info, info_filename)) {
     sample_server_pid = midi_server_pid = 0;
     return;

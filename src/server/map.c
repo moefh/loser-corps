@@ -338,7 +338,7 @@ static int read_npc_info(SERVER *server)
   NPC_INFO npc_info[MAX_NPCS], *p;
   char filename[256];
 
-  sprintf(filename, "%snpcs.dat", DATA_DIR);
+  snprintf(filename, sizeof(filename), "%snpcs.dat", DATA_DIR);
   num_npcs = parse_npc_info(npc_info, filename);
   if (num_npcs < 0)
     return 1;
@@ -382,7 +382,7 @@ static void read_sound_info(SERVER *server)
 {
   char filename[256];
 
-  sprintf(filename, "%ssound.dat", DATA_DIR);
+  snprintf(filename, sizeof(filename), "%ssound.dat", DATA_DIR);
   parse_sound_info(&server->sound_info, filename);
 
   sfx_bump = sfx_id(server, "bump");

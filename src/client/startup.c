@@ -493,8 +493,8 @@ static void exec_connect_option(void)
   field = 0;
   redraw = 1;
   done = 0;
-  sprintf(port_num, "%d", server->port);
-  sprintf(server_cmd, "loser-s -maxfps 40 -port %d", server->port);
+  snprintf(port_num, sizeof(port_num), "%d", server->port);
+  snprintf(server_cmd, sizeof(port_num), "loser-s -maxfps 40 -port %d", server->port);
 
   while (! (mains->done || done)) {
     DO_DELAY(10000);
@@ -618,7 +618,7 @@ static void exec_connect_option(void)
 
 static void exec_character_option(void)
 {
-  char file_name[256];
+  char file_name[272];
   int jack_available[256], secret_len[256], secret_pos = 0;
   NETMSG msg;
   int done, jack, key, field, redraw;
@@ -628,9 +628,9 @@ static void exec_character_option(void)
     int i, j;
 
     for (i = 0; i < npc_number.num_jacks; i++) {
-      char tmp[256];
+      char tmp[272];
 
-      sprintf(file_name, "start-up|%s.spr", npc_info[i].file);
+      snprintf(file_name, sizeof(file_name), "start-up|%s.spr", npc_info[i].file);
       strcpy(tmp, img_file_name(file_name));
       jack_bmp[i] = read_xbitmap(tmp);
       if (jack_bmp[i] == NULL) {
@@ -828,7 +828,7 @@ static int get_map_bmp(XBITMAP *bmp, char *name, int *p_map_w, int *p_map_h,
 
   *author = *desc = *tiles = *tiles_author = '\0';
 
-  sprintf(filename, "%s%s%s.map", DATA_DIR, MAPS_DIR, name);
+  snprintf(filename, sizeof(filename), "%s%s%s.map", DATA_DIR, MAPS_DIR, name);
   map_data = read_map(filename, &map_w, &map_h, author, desc, tiles);
   if (map_data == NULL)
     return 1;
@@ -911,10 +911,10 @@ static int get_map_list(char **list, int max)
   num_maps = 0;
   for (i = 0; dir_list[i] != NULL; i++) {
     if (dir_list[i][0] != '\0')
-      sprintf(prefix, "%s%c", dir_list[i], DIRECTORY_SEP);
+      snprintf(prefix, sizeof(prefix), "%s%c", dir_list[i], DIRECTORY_SEP);
     else
       prefix[0] = '\0';
-    sprintf(maps_dir, "%s%s%s", DATA_DIR, MAPS_DIR, prefix);
+    snprintf(maps_dir, sizeof(maps_dir), "%s%s%s", DATA_DIR, MAPS_DIR, prefix);
     n = get_maps_from_dir(maps_dir, prefix, list + num_maps, max - num_maps);
     if (n > 0) {
       qsort(list + num_maps, n, sizeof(char *), compare_map_name);
@@ -992,7 +992,7 @@ static void exec_map_option(void)
       char map_author[256];
 
       if (*author)
-	sprintf(map_author, "(by %s)", author);
+	snprintf(map_author, sizeof(map_author), "(by %s)", author);
       else
 	*map_author = '\0';
       clear_screen();
@@ -1264,7 +1264,7 @@ static int display_msg_box(const char *fmt, ...)
   va_list ap;
 
   va_start(ap, fmt);
-  vsprintf(str, fmt, ap);
+  vsnprintf(str, sizeof(str), fmt, ap);
   va_end(ap);
 
   if (! in_message)
@@ -1301,7 +1301,7 @@ static int display_msg_box(const char *fmt, ...)
   va_list ap;
 
   va_start(ap, fmt);
-  vsprintf(str, fmt, ap);
+  vsnprintf(str, sizeof(str), fmt, ap);
   va_end(ap);
 #endif
   return 0;

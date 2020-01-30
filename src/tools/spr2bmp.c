@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
   }
 
   for (i = 0; i < n_bmps; i++) {
-    sprintf(filename, "%s%03d.bmp", argv[2], i);
+    snprintf(filename, sizeof(filename), "%s%03d.bmp", argv[2], i);
     if (write_bmp(bmp[i], filename)) {
       printf("Can't write `%s'\n", filename);
       exit(1);

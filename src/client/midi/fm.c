@@ -78,7 +78,7 @@ static int load(int seqfd, int dev, char *data_dir)
 
   for (i = 0; i < 256; i++)
     fmloaded[i] = 0;
-  sprintf(filename, "%s/%s", data_dir, MELODIC_FILE);
+  snprintf(filename, sizeof(filename), "%s/%s", data_dir, MELODIC_FILE);
   sbfd = open(filename, O_RDONLY, 0);
   if (sbfd < 0)
     return 1;
@@ -109,7 +109,7 @@ static int load(int seqfd, int dev, char *data_dir)
   }
   close(sbfd);
 
-  sprintf(filename, "%s/%s", data_dir, DRUMS_FILE);
+  snprintf(filename, sizeof(filename), "%s/%s", data_dir, DRUMS_FILE);
   sbfd = open(filename, O_RDONLY, 0);
 
   for (i = 128; i < 175; i++) {

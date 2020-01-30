@@ -138,7 +138,7 @@ static void set_jack_score(int id, int score)
   if (id >= n_jacks)
     return;
 
-  sprintf(score_txt, "%d", score);
+  snprintf(score_txt, sizeof(score_txt), "%d", score);
 
   clear_xbitmap(jacks[id].score_bmp, transp_color);
   draw_text(jacks[id].score_bmp, font_score, 0, 0, score_txt);

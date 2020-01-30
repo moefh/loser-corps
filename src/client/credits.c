@@ -176,7 +176,7 @@ static int read_credit_sprite(char *file, CREDIT_LINE *cl)
   XBITMAP *ani[256];
   char filename[256];
 
-  sprintf(filename, "credits|%s.spr", file);
+  snprintf(filename, sizeof(filename), "credits|%s.spr", file);
   strcpy(filename, img_file_name(filename));
 
   cl->n_frames = read_xbitmaps(filename, 256, ani);

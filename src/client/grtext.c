@@ -56,7 +56,7 @@ void gr_printf(int x, int y, BMP_FONT *font, const char *fmt, ...)
   va_list ap;
 
   va_start(ap, fmt);
-  vsprintf(str, fmt, ap);
+  vsnprintf(str, sizeof(str), fmt, ap);
   va_end(ap);
 
   pos = 0;
@@ -78,7 +78,7 @@ void gr_printf_selected(int sel, int x, int y, BMP_FONT *font,
   va_list ap;
 
   va_start(ap, fmt);
-  vsprintf(str, fmt, ap);
+  vsnprintf(str, sizeof(str), fmt, ap);
   va_end(ap);
 
   if (bmp == NULL) {
@@ -201,7 +201,7 @@ void start_error_msg(char *fmt, ...)
   va_list ap;
 
   va_start(ap, fmt);
-  vsprintf(str, fmt, ap);
+  vsnprintf(str, sizeof(str), fmt, ap);
   va_end(ap);
 
   if (font_8x8 != NULL) {
