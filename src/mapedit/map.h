@@ -27,7 +27,7 @@ typedef struct NPC_NAME NPC_NAME;
 
 struct NPC_NAME {
   int npc;               /* NPC number */
-  char name[256];        /* NPC definition name */
+  char name[258];        /* NPC definition name */
   int child;             /* 1 if is a child */
 };
 

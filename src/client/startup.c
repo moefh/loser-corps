@@ -906,7 +906,7 @@ static int get_map_list(char **list, int max)
 {
   static char *dir_list[] = { "", "death-match", "multiplayer", "usr", NULL };
   int i, n, num_maps;
-  char maps_dir[256], prefix[256];
+  char maps_dir[261], prefix[256];
 
   num_maps = 0;
   for (i = 0; dir_list[i] != NULL; i++) {
@@ -989,7 +989,7 @@ static void exec_map_option(void)
       redraw = 1;
     }
     if (redraw) {
-      char map_author[256];
+      char map_author[261];
 
       if (*author)
 	snprintf(map_author, sizeof(map_author), "(by %s)", author);

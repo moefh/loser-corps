@@ -204,7 +204,7 @@ int read_palette(char *filename)
 int read_map_file(char *map_name)
 {
   int i, j;
-  char filename[256];
+  char filename[269];
   char tiles_filename[256], parallax_filename[256];
   char *music_name, *parallax_name;
 

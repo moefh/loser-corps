@@ -20,7 +20,7 @@ int gz_file_open(GZIP_FILE *file, const char *name, const char *mode)
 
   snprintf(file_name, sizeof(file_name), "%s.gz", name);
   if (access(file_name, R_OK) == 0) {
-    char command[1024];
+    char command[1034];
 
     snprintf(command, sizeof(command), "gunzip -c %s", file_name);
     if ((file->f = popen(command, mode)) != NULL) {
