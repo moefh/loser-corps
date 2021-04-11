@@ -17,6 +17,7 @@ MENU file_menu[] = {
   { "Save as...", menu_save_as, NULL },
   { "", NULL, NULL },
   { "Read tiles...", menu_read_tiles, NULL },
+  { "Export file", menu_export, NULL },
   { "", NULL, NULL },
   { "Exit", menu_exit, NULL },
   { NULL },

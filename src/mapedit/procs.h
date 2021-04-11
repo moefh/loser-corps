@@ -8,6 +8,7 @@ int menu_open(WINDOW *, int);
 int menu_save(WINDOW *, int);
 int menu_save_as(WINDOW *, int);
 int menu_read_tiles(WINDOW *, int);
+int menu_export(WINDOW *, int);
 int menu_exit(WINDOW *, int);
 int menu_undo(WINDOW *, int);
 int menu_setsize(WINDOW *, int);

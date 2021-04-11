@@ -499,6 +499,49 @@ int menu_read_tiles(WINDOW *win, int id)
   return D_O_K;
 }
 
+int menu_export(WINDOW *win, int id)
+{
+  char file[512];
+
+  snprintf(file, sizeof(file), "%s.h", state.filename);
+  FILE *f = fopen(file, "w");
+  if (f == NULL) {
+    alert(win->parent, "Error", "Can't open file", file, "", "OK", NULL);
+    return D_O_K;
+  }
+
+  MAP *map = state.map;
+  
+  fprintf(f, "/* File exported from '%s' */\n\n", state.filename);
+  fprintf(f, "extern const MAP_TILE game_map_tiles[];\n");
+  fprintf(f, "extern const MAP_SPAWN_POINT game_map_spawn_points[];\n");
+  fprintf(f, "const MAP game_map = {\n");
+  fprintf(f, "  .width = %d,\n", map->w);
+  fprintf(f, "  .height = %d,\n", map->h);
+  fprintf(f, "  .tiles = game_map_tiles,\n");
+  fprintf(f, "  .num_spawn_points = 1,\n");
+  fprintf(f, "  .spawn_points = game_map_spawn_points,\n");
+  fprintf(f, "};\n\n");
+  fprintf(f, "const MAP_TILE game_map_tiles[] = {");
+  int num_tiles = 0;
+  for (int y = 0; y < map->h; y++) {
+    MAP_DATA *line = map->line[y];
+    for (int x = 0; x < map->w; x++) {
+      if (num_tiles++ % 3 == 0) {
+        fprintf(f, "\n ");
+      }
+      fprintf(f, " {0x%04x,0x%04x,0x%04x},", (unsigned short)line[x].back, (unsigned short)line[x].fore, (unsigned short)line[x].block);
+    }
+  }
+  fprintf(f, "\n};\n");
+  fprintf(f, "const MAP_SPAWN_POINT game_map_spawn_points[] = {\n");
+  fprintf(f, "  { { 0xf0000, 0xf0000 }, 1 },\n");
+  fprintf(f, "};\n");
+  
+  fclose(f);
+  return D_O_K;
+}
+
 int menu_exit(WINDOW *win, int id)
 {
   return D_CLOSE;
